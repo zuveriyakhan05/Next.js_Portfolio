@@ -1,63 +1,42 @@
 "use client";
 
 export default function Sidebar() {
+  const navItems = ["Contact", "Projects", "Skills", "About Me"];
+
   return (
-    <aside className="sidebar">
-      <div className="logo">ZK</div>
-      <nav>
-        <ul>
-          <li>Contact</li>
-          <li>Projects</li>
-          <li>Skills</li>
-          <li>About Me</li>
+    <aside
+      className="fixed h-full w-[100px] flex flex-col items-center bg-[#191919] text-gray-300 py-8 z-20"
+      aria-label="Sidebar navigation"
+    >
+      {/* Logo */}
+      <div className="font-black text-3xl tracking-widest mb-16 select-none">ZK</div>
+
+      {/* Navigation Links */}
+      <nav className="flex-1 flex flex-col items-center" aria-label="Primary">
+        <ul className="space-y-0">
+          {navItems.map((item) => (
+            <li
+              key={item}
+              style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+              className="text-base cursor-pointer hover:text-white select-none transition-colors"
+              tabIndex={0}
+              role="link"
+            >
+              {item}
+            </li>
+          ))}
         </ul>
       </nav>
-      <div className="icons">
-       
-        <div>🖌️</div>
-        <div>🖋️</div>
-        <div>⚫</div>
+
+      {/* Spacer to push icons to bottom */}
+      <div className="flex-1" />
+
+      {/* Icons only */}
+      <div className="flex flex-col items-center gap-7 mb-5">
+        <span className="text-2xl select-none">🦋</span>
+        <span className="text-2xl select-none">🧬</span>
+        <span className="text-2xl select-none">🌐</span>
       </div>
-      <style jsx>{`
-        .sidebar {
-          width: 92px;
-          background: #191919;
-          color: #aaa;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding: 32px 0 0 0;
-          min-height: 100vh;
-        }
-        .logo {
-          font-weight: bold;
-          font-size: 2.4rem;
-          letter-spacing: 2px;
-          margin-bottom: 60px;
-        }
-        nav ul {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-        }
-        nav li {
-          writing-mode: vertical-rl;
-          transform: rotate(180deg);
-          margin: 24px 0;
-          font-size: 1rem;
-          cursor: pointer;
-        }
-        .icons {
-          margin-top: auto;
-          display: flex;
-          flex-direction: column;
-          gap: 22px;
-          margin-bottom: 18px;
-        }
-        .icons div {
-          font-size: 1.2rem;
-        }
-      `}</style>
     </aside>
   );
 }
