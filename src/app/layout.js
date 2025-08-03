@@ -1,6 +1,7 @@
 
 import Sidebar from "@/components/Sidebar";
 import Hero from "@/components/Hero";
+import ThemeToggle from "@/components/ThemeToggle";
 
 import "./globals.css";
 
@@ -16,6 +17,7 @@ export default function () {
       <body>
         <Sidebar />
         <Hero />
+        <ThemeToggle />
        
       </body>
     </html>
