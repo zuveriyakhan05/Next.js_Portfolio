@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
@@ -12,7 +12,7 @@ export default function ThemeToggle() {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null; 
+  if (!mounted) return null;
 
   const currentTheme = theme === "system" ? systemTheme : theme;
 

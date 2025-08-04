@@ -1,5 +1,5 @@
 
-import Sidebar from "@/components/Sidebar";
+
 import Hero from "@/components/Hero";
 import ThemeToggle from "@/components/ThemeToggle";
 
@@ -15,9 +15,11 @@ export default function () {
   return (
     <html lang="en">
       <body>
-        <Sidebar />
+         
         <Hero />
-        <ThemeToggle />
+        <ThemeToggle attribute="class"
+          enableSystem={true}
+          defaultTheme="system"/>
        
       </body>
     </html>
