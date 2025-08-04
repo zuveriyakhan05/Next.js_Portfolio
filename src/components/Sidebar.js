@@ -1,107 +1,133 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import { useState } from "react";
-import { FaLinkedin, FaGithub, FaBars, FaTimes } from "react-icons/fa";
-import { SiFigma } from "react-icons/si";
+import Link from "next/link";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 export default function Sidebar() {
-  const navItems = ["Contact", "Projects", "Skills", "About Me"];
-  const [isOpen, setIsOpen] = useState(false);
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [open, setOpen] = useState(false);
 
-  const isDark = theme === "dark" || (theme === "system" && resolvedTheme === "dark");
-
-  // Close sidebar on click (mobile)
-  const handleNavClick = () => setIsOpen(false);
+  const navLinks = [
+    { name: "Contact", href: "/contact" },
+    { name: "Projects", href: "/projects" },
+    { name: "Skills", href: "/skills" },
+    { name: "About", href: "/about" },
+  ];
 
   return (
     <>
-      {/* Hamburger Button (mobile only) */}
+      {/* Google Fonts Import for sidebar font */}
+      <style global jsx>{`
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+      `}</style>
+
+      {/* Hamburger for mobile only */}
       <button
-        className="fixed top-4 left-4 z-40 sm:hidden bg-[#191919] rounded-full p-3 text-gray-300 shadow-lg"
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label={isOpen ? "Close sidebar" : "Open sidebar"}
-        type="button"
+        aria-label="Open Sidebar"
+        className="fixed top-4 left-4 z-50 bg-white/50 backdrop-blur p-2 rounded shadow text-2xl sm:hidden"
+        onClick={() => setOpen(true)}
       >
-        {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+        <FaBars />
       </button>
 
-      {/* Sidebar overlay (mobile open) */}
-      <div
-        className={`fixed inset-0 z-30 bg-black/40 transition-opacity duration-300 ${
-          isOpen ? "block" : "hidden"
-        } sm:hidden`}
-        onClick={() => setIsOpen(false)}
-      />
-
+      {/* Mobile Sidebar */}
       <aside
         className={`
-          fixed top-0 left-0 h-full w-[100px] flex flex-col items-center
-          bg-[#191919] text-gray-300 py-8 z-40
+          fixed top-0 left-0 h-full w-16 z-50 bg-white/20 backdrop-blur-xl flex flex-col items-center py-6 justify-start gap-10
           transition-transform duration-300
-          ${isOpen ? "translate-x-0" : "-translate-x-full"}
-          sm:translate-x-0 sm:static sm:flex
-          ${isDark ? "dark" : ""}
+          ${open ? "translate-x-0" : "-translate-x-20"}
+          sm:hidden
         `}
-        aria-label="Sidebar navigation"
+        style={{ minHeight: "240px" }}
       >
         {/* Logo */}
-        <div className="font-black text-3xl tracking-widest mb-16 select-none">ZK</div>
-
-        {/* Removed the Theme Toggle Button */}
-
-        {/* Nav Links */}
-        <nav className="flex-1 flex flex-col items-center mt-12" aria-label="Primary navigation">
-          <ul>
-            {navItems.map((item) => (
-              <li
-                key={item}
-                style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
-                className="text-base cursor-pointer hover:text-white dark:hover:text-pink-400 select-none transition-colors mb-4"
-                tabIndex={0}
-                role="link"
-                onClick={handleNavClick}
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="flex-1" />
-
-        {/* Social Icons */}
-        <div className="flex flex-col items-center gap-7 mb-5">
-          <a
-            href="https://www.linkedin.com/in/zuveriya-khan-9a44a6319"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-2xl text-blue-500 hover:text-blue-700 dark:hover:text-blue-400 transition-colors"
-            aria-label="LinkedIn"
-          >
-            <FaLinkedin />
-          </a>
-          <a
-            href="https://www.figma.com/@yourprofile"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-2xl text-pink-600 hover:text-pink-800 dark:hover:text-pink-400 transition-colors"
-            aria-label="Figma"
-          >
-            <SiFigma />
-          </a>
-          <a
-            href="https://github.com/zuveriyakhan05"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-2xl text-gray-300 hover:text-white dark:text-black dark:hover:text-indigo-600 transition-colors"
-            aria-label="GitHub"
-          >
-            <FaGithub />
-          </a>
+        <div className="mb-2 flex items-center justify-center w-full text-indigo-600 font-extrabold text-5xl select-none animated-logo logo-shift">
+          ZK
         </div>
+
+        <button
+          className="absolute top-6 right-3 text-2xl"
+          onClick={() => setOpen(false)}
+          aria-label="Close Sidebar"
+        >
+          <FaTimes />
+        </button>
+
+        {navLinks.map((item) => (
+          <Link
+            key={item.name}
+            href={item.href}
+            onClick={() => setOpen(false)}
+            className="text-gray-800 hover:text-indigo-600 transition font-semibold text-sm"
+            style={{
+              writingMode: "vertical-rl",
+              transform: "rotate(180deg)",
+              whiteSpace: "nowrap",
+              letterSpacing: "0.1em",
+            }}
+          >
+            {item.name}
+          </Link>
+        ))}
       </aside>
+
+      {/* Desktop Sidebar */}
+      <aside
+        className={`
+          hidden sm:fixed sm:top-0 sm:left-0 sm:h-full sm:w-16 sm:z-50
+          sm:bg-white/20 sm:backdrop-blur-xl sm:flex sm:flex-col sm:items-center sm:justify-start sm:py-6 sm:gap-10
+        `}
+        style={{ minHeight: "240px" }}
+      >
+        {/* Logo */}
+        <div className="text-[40px] mb-2 flex items-center justify-center w-full text-indigo-600 font-extrabold text-5xl select-none animated-logo logo-shift" style={{ fontFamily: "'Poppins', sans-serif" }}>
+          ZK
+        </div>
+
+        {navLinks.map((item) => (
+          <Link
+            key={item.name}
+            href={item.href}
+            className="text-gray-800 hover:text-indigo-600 transition font-semibold text-sm"
+            style={{
+              writingMode: "vertical-rl",
+              transform: "rotate(180deg)",
+              whiteSpace: "nowrap",
+              letterSpacing: "0.1em",
+            }}
+          >
+            {item.name}
+          </Link>
+        ))}
+      </aside>
+
+      {/* Animation styles and position adjustment */}
+      <style jsx>{`
+        .animated-logo {
+          animation: logoAnim 3s ease-in-out infinite;
+          display: inline-block;
+          font-family: 'Poppins', sans-serif;
+        }
+
+        .logo-shift {
+          position: relative;
+          right: -12px; /* Shifts logo 12px outside right */
+        }
+
+        @keyframes logoAnim {
+          0%,
+          100% {
+            transform: scale(1) rotate(0deg);
+            color: #4f46e5; /* indigo-600 */
+            text-shadow: 0 0 10px rgba(79, 70, 229, 0.7);
+          }
+          50% {
+            transform: scale(1.2) rotate(15deg);
+            color: #4338ca; /* indigo-700 */
+            text-shadow: 0 0 20px rgba(67, 56, 202, 0.9);
+          }
+        }
+      `}</style>
     </>
   );
 }
