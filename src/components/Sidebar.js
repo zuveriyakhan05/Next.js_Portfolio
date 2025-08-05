@@ -16,9 +16,9 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Google Fonts Import for sidebar font */}
+      {/* Google Fonts Import for animated stylish logo (Montserrat) */}
       <style global jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
       `}</style>
 
       {/* Hamburger for mobile only */}
@@ -40,8 +40,11 @@ export default function Sidebar() {
         `}
         style={{ minHeight: "240px" }}
       >
-        {/* Logo */}
-        <div className="mb-2 flex items-center justify-center w-full text-indigo-600 font-extrabold text-5xl select-none animated-logo logo-shift">
+        {/* Logo - smaller, custom font, more margin top in mobile */}
+        <div
+          className="mb-2 mt-10 flex items-center justify-center w-full text-indigo-600 font-extrabold text-4xl select-none animated-logo logo-shift"
+          style={{ fontFamily: "'Lora', 'serif'" }}
+        >
           ZK
         </div>
 
@@ -79,8 +82,11 @@ export default function Sidebar() {
         `}
         style={{ minHeight: "240px" }}
       >
-        {/* Logo */}
-        <div className="text-[40px] mb-2 flex items-center justify-center w-full text-indigo-600 font-extrabold text-5xl select-none animated-logo logo-shift" style={{ fontFamily: "'Poppins', sans-serif" }}>
+        {/* Logo - smaller, custom font */}
+        <div
+          className="mb-2 flex items-center justify-center w-full text-indigo-600 font-extrabold text-4xl select-none animated-logo logo-shift"
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+        >
           ZK
         </div>
 
@@ -106,7 +112,6 @@ export default function Sidebar() {
         .animated-logo {
           animation: logoAnim 3s ease-in-out infinite;
           display: inline-block;
-          font-family: 'Poppins', sans-serif;
         }
 
         .logo-shift {
@@ -115,15 +120,14 @@ export default function Sidebar() {
         }
 
         @keyframes logoAnim {
-          0%,
-          100% {
+          0%, 100% {
             transform: scale(1) rotate(0deg);
-            color: #4f46e5; /* indigo-600 */
+            color: #4f46e5;
             text-shadow: 0 0 10px rgba(79, 70, 229, 0.7);
           }
           50% {
             transform: scale(1.2) rotate(15deg);
-            color: #4338ca; /* indigo-700 */
+            color: #4338ca;
             text-shadow: 0 0 20px rgba(67, 56, 202, 0.9);
           }
         }
