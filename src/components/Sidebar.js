@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes, FaGithub, FaFigma, FaLinkedin } from "react-icons/fa";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
@@ -14,13 +14,26 @@ export default function Sidebar() {
     { name: "About", href: "/about" },
   ];
 
+  const socialLinks = [
+    {
+      name: "GitHub",
+      href: "https://github.com/your-github",
+      icon: <FaGithub size={22} />,
+    },
+    {
+      name: "Figma",
+      href: "https://figma.com/@your-figma",
+      icon: <FaFigma size={22} />,
+    },
+    {
+      name: "LinkedIn",
+      href: "https://linkedin.com/in/your-linkedin",
+      icon: <FaLinkedin size={22} />,
+    },
+  ];
+
   return (
     <>
-      {/* Google Fonts Import for animated stylish logo (Montserrat) */}
-      <style global jsx>{`
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
-      `}</style>
-
       {/* Hamburger for mobile only */}
       <button
         aria-label="Open Sidebar"
@@ -33,21 +46,14 @@ export default function Sidebar() {
       {/* Mobile Sidebar */}
       <aside
         className={`
-          fixed top-0 left-0 h-full w-16 z-50 bg-white/20 backdrop-blur-xl flex flex-col items-center py-6 justify-start gap-10
+          fixed top-0 left-0 h-full w-16 z-50 bg-white/20 backdrop-blur-xl flex flex-col items-center py-6 justify-between
           transition-transform duration-300
           ${open ? "translate-x-0" : "-translate-x-20"}
           sm:hidden
         `}
         style={{ minHeight: "240px" }}
       >
-        {/* Logo - smaller, custom font, more margin top in mobile */}
-        <div
-          className="mb-2 mt-10 flex items-center justify-center w-full text-indigo-600 font-extrabold text-4xl select-none animated-logo logo-shift"
-          style={{ fontFamily: "'Lora', 'serif'" }}
-        >
-          ZK
-        </div>
-
+        {/* Close button */}
         <button
           className="absolute top-6 right-3 text-2xl"
           onClick={() => setOpen(false)}
@@ -56,82 +62,85 @@ export default function Sidebar() {
           <FaTimes />
         </button>
 
-        {navLinks.map((item) => (
-          <Link
-            key={item.name}
-            href={item.href}
-            onClick={() => setOpen(false)}
-            className="text-gray-800 hover:text-indigo-600 transition font-semibold text-sm"
-            style={{
-              writingMode: "vertical-rl",
-              transform: "rotate(180deg)",
-              whiteSpace: "nowrap",
-              letterSpacing: "0.1em",
-            }}
-          >
-            {item.name}
-          </Link>
-        ))}
+        {/* Navigation links, moved downward with extra margin */}
+        <div className="flex flex-col items-center gap-10 mt-20">
+          {navLinks.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              className="text-gray-800 hover:text-indigo-600 transition font-semibold text-sm"
+              style={{
+                writingMode: "vertical-rl",
+                transform: "rotate(180deg)",
+                whiteSpace: "nowrap",
+                letterSpacing: "0.1em",
+              }}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
+
+        {/* Social icons - moved higher with mb-8 */}
+        <div className="flex flex-col items-center gap-5 mb-8">
+          {socialLinks.map((social) => (
+            <a
+              key={social.name}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={social.name}
+              className="text-gray-700 hover:text-indigo-600 transition"
+            >
+              {social.icon}
+            </a>
+          ))}
+        </div>
       </aside>
 
-      {/* Desktop Sidebar */}
+      {/* Desktop Sidebar - keep similar spacing for consistency */}
       <aside
         className={`
           hidden sm:fixed sm:top-0 sm:left-0 sm:h-full sm:w-16 sm:z-50
-          sm:bg-white/20 sm:backdrop-blur-xl sm:flex sm:flex-col sm:items-center sm:justify-start sm:py-6 sm:gap-10
+          sm:bg-white/20 sm:backdrop-blur-xl sm:flex sm:flex-col sm:items-center sm:justify-between sm:py-6
         `}
         style={{ minHeight: "240px" }}
       >
-        {/* Logo - smaller, custom font */}
-        <div
-          className="mb-2 flex items-center justify-center w-full text-indigo-600 font-extrabold text-4xl select-none animated-logo logo-shift"
-          style={{ fontFamily: "'Montserrat', sans-serif" }}
-        >
-          ZK
+        {/* Navigation links - add margin top */}
+        <div className="flex flex-col items-center gap-10 mt-20">
+          {navLinks.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="text-gray-800 hover:text-indigo-600 transition font-semibold text-sm"
+              style={{
+                writingMode: "vertical-rl",
+                transform: "rotate(180deg)",
+                whiteSpace: "nowrap",
+                letterSpacing: "0.1em",
+              }}
+            >
+              {item.name}
+            </Link>
+          ))}
         </div>
-
-        {navLinks.map((item) => (
-          <Link
-            key={item.name}
-            href={item.href}
-            className="text-gray-800 hover:text-indigo-600 transition font-semibold text-sm"
-            style={{
-              writingMode: "vertical-rl",
-              transform: "rotate(180deg)",
-              whiteSpace: "nowrap",
-              letterSpacing: "0.1em",
-            }}
-          >
-            {item.name}
-          </Link>
-        ))}
+        {/* Social icons - moved up with mb-8 */}
+        <div className="flex flex-col items-center gap-5 mb-8">
+          {socialLinks.map((social) => (
+            <a
+              key={social.name}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={social.name}
+              className="text-gray-700 hover:text-indigo-600 transition"
+            >
+              {social.icon}
+            </a>
+          ))}
+        </div>
       </aside>
-
-      {/* Animation styles and position adjustment */}
-      <style jsx>{`
-        .animated-logo {
-          animation: logoAnim 3s ease-in-out infinite;
-          display: inline-block;
-        }
-
-        .logo-shift {
-          position: relative;
-          right: -12px; /* Shifts logo 12px outside right */
-        }
-
-        @keyframes logoAnim {
-          0%, 100% {
-            transform: scale(1) rotate(0deg);
-            color: #4f46e5;
-            text-shadow: 0 0 10px rgba(79, 70, 229, 0.7);
-          }
-          50% {
-            transform: scale(1.2) rotate(15deg);
-            color: #4338ca;
-            text-shadow: 0 0 20px rgba(67, 56, 202, 0.9);
-          }
-        }
-      `}</style>
     </>
   );
 }

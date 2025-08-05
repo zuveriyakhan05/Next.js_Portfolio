@@ -15,6 +15,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-screen flex">
         {/* Sidebar with fixed width */}
         <Sidebar />
+        
 
         {/* Main content (Hero + other stuff) fills remaining space */}
         <main className="flex-1">
