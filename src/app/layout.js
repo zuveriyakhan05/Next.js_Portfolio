@@ -1,6 +1,4 @@
-import Sidebar from "@/components/Sidebar";
-import Hero from "@/components/Hero";
-import ThemeToggle from "@/components/ThemeToggle";
+
 
 import "./globals.css";
 
@@ -13,15 +11,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="min-h-screen flex">
-        {/* Sidebar with fixed width */}
-        <Sidebar />
-        
-
-        {/* Main content (Hero + other stuff) fills remaining space */}
+       
         <main className="flex-1">
-          <Hero />
           {children}
-          <ThemeToggle />
+          
         </main>
       </body>
     </html>

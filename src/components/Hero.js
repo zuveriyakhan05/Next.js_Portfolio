@@ -3,9 +3,9 @@
 export default function Hero() {
   return (
     <section className="relative w-full min-h-screen h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-pink-100 to-purple-100 overflow-hidden">
-      {/* Animated decorative shapes */}
+
       <div>
-        {/* Existing shapes */}
+
         <div className="absolute top-10 left-8 w-36 h-36 bg-indigo-300 opacity-20 rounded-full animate-float bounce-slow" />
         <div className="absolute bottom-20 right-12 w-28 h-28 bg-pink-400 opacity-20 rounded-full animate-float-delay bounce-slow" />
         <svg className="absolute right-24 top-24 w-28 h-28 opacity-30 animate-float-alt bounce-slower" viewBox="0 0 100 100">
@@ -14,20 +14,16 @@ export default function Hero() {
         <div className="absolute left-1/3 bottom-12 w-16 h-16 bg-indigo-200 opacity-20 rounded-lg animate-rotate bounce" />
         <div className="absolute top-1/2 left-[10%] w-5 h-5 bg-purple-400 opacity-50 rounded-full animate-orbit bounce" />
 
-        {/* New additional shapes */}
-        {/* Floating circle top-right */}
+        
         <div className="absolute top-16 right-32 w-24 h-24 bg-purple-300 opacity-15 rounded-full animate-float bounce-slower" />
-        {/* Floating triangle bottom-left */}
         <svg className="absolute bottom-28 left-16 w-20 h-20 opacity-25 animate-float-alt bounce" viewBox="0 0 100 100">
           <polygon points="50,10 10,90 90,90" fill="#c084fc" />
         </svg>
-        {/* Floating square top-center */}
         <div className="absolute top-8 left-1/2 -translate-x-1/2 w-20 h-20 bg-pink-300 opacity-20 rounded-lg animate-rotate bounce-slow" />
-        {/* Small orbiting dot bottom-right */}
+
         <div className="absolute bottom-16 right-24 w-4 h-4 bg-indigo-400 opacity-40 rounded-full animate-orbit bounce-slower" />
       </div>
 
-      {/* Hero content */}
       <div className="relative z-10 text-center px-4 max-w-2xl mx-auto">
         <h1 className="text-4xl md:text-6xl font-extrabold mb-4 animate-fade-down scale-up">
           Hi, I'm <span className="text-indigo-600 drop-shadow-lg">Zuveriya Khan</span>
@@ -46,7 +42,6 @@ export default function Hero() {
         </a>
       </div>
 
-      {/* Custom CSS animations */}
       <style jsx>{`
         /* Float up and down */
         .animate-float {

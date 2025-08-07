@@ -17,7 +17,6 @@ export default function NotFound() {
         Go Back Home
       </Link>
 
-      {/* Simple fade-in animation */}
       <style jsx>{`
         .animate-fade-in {
           animation: fadeIn 1.2s ease forwards;
