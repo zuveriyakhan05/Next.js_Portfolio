@@ -59,7 +59,6 @@ export default function NotFound() {
       </Link>
 
       <style jsx>{`
-        /* Big Zoom In */
         .animate-zoom-in {
           animation: zoomIn 1s ease forwards;
         }
@@ -74,7 +73,6 @@ export default function NotFound() {
           }
         }
 
-        /* Slide down for heading */
         .animate-slide-down {
           animation: slideDown 1.2s ease forwards;
         }
@@ -89,7 +87,6 @@ export default function NotFound() {
           }
         }
 
-        /* Fade up for paragraph */
         .animate-fade-up {
           animation: fadeUp 1.4s ease forwards;
         }
@@ -120,7 +117,6 @@ export default function NotFound() {
           }
         }
 
-        /* Floating animations for background shapes */
         .animate-float {
           animation: float 6s ease-in-out infinite;
         }
@@ -140,11 +136,9 @@ export default function NotFound() {
           }
         }
 
-        /* Slow rotation for triangle */
         .animate-rotate-slow {
           animation: rotate 15s linear infinite;
         }
-        /* Slower rotation for pentagon */
         .animate-rotate-slower {
           animation: rotate 25s linear infinite;
         }
