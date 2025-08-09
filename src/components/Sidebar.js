@@ -17,7 +17,7 @@ export default function Sidebar() {
   const socialLinks = [
     {
       name: "GitHub",
-      href: "https://github.com/your-github",
+      href: "https://github.com/https://github.com/zuveriyakhan05",
       icon: <FaGithub size={22} />,
     },
     {
@@ -27,7 +27,7 @@ export default function Sidebar() {
     },
     {
       name: "LinkedIn",
-      href: "https://linkedin.com/in/your-linkedin",
+      href: "https://linkedin.com/in/www.linkedin.com/in/zuveriya-khan-9a44a6319",
       icon: <FaLinkedin size={22} />,
     },
   ];
@@ -99,8 +99,7 @@ export default function Sidebar() {
           hidden sm:fixed sm:top-0 sm:left-0 sm:h-full sm:w-16 sm:z-50
           sm:bg-white/20 sm:backdrop-blur-xl sm:flex sm:flex-col sm:items-center sm:justify-between sm:py-6
         `}
-        style={{ minHeight: "240px" }}
-      >
+        style={{ minHeight: "240px" }}>
         <div className="flex flex-col items-center gap-10 mt-20">
           {navLinks.map((item) => (
             <Link
@@ -118,7 +117,6 @@ export default function Sidebar() {
             </Link>
           ))}
         </div>
-        {/* Social icons - moved up with mb-8 */}
         <div className="flex flex-col items-center gap-5 mb-8">
           {socialLinks.map((social) => (
             <a
