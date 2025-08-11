@@ -35,7 +35,7 @@ export default function Hero() {
           I design stunning interfaces and seamless digital experiences.
         </p>
         <a
-          href="#portfolio"
+          href="/projects"
           className="inline-block px-8 py-3 bg-indigo-600 text-white font-semibold rounded-full shadow-md hover:bg-indigo-700 transition animate-fade-up scale-up delay-500"
         >
           View My Work
