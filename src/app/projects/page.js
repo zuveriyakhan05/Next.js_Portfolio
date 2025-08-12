@@ -8,9 +8,9 @@ export default function Projects() {
         <div className="grid md:grid-cols-2 gap-6 mt-8">
           {/* Example Project Cards */}
           <div className="bg-white shadow rounded-lg p-6 text-left">
-            <h2 className="font-bold text-lg text-indigo-700 mb-2">Awesome Portfolio</h2>
-            <p className="text-gray-600 mb-2">A responsive, animated portfolio site made with Next.js and Tailwind CSS.</p>
-            <a href="https://yourprojecturl.com" target="_blank" rel="noopener" className="text-indigo-500 hover:underline">Live Demo</a>
+            <h2 className="font-bold text-lg text-indigo-700 mb-2">React Developer Portfolio</h2>
+            <p className="text-gray-600 mb-2">A responsive, animated portfolio site made with React.js and Tailwind CSS.</p>
+            <a href="https://zuveriyakhan.netlify.app/" target="_blank" rel="noopener" className="text-indigo-500 hover:underline">Live Demo</a>
           </div>
           <div className="bg-white shadow rounded-lg p-6 text-left">
             <h2 className="font-bold text-lg text-indigo-700 mb-2">Design System UI Kit</h2>
