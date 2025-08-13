@@ -1,7 +1,7 @@
 "use client";
 
 export default function About() {
-  const dotsCount = 25; // number of dots
+  const dotsCount = 50; // number of dots
   const dots = Array.from({ length: dotsCount });
 
   // A pastel / soft color palette
@@ -17,7 +17,7 @@ export default function About() {
   return (
     <main className="relative sm:ml-16 min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-purple-50 to-blue-50 overflow-hidden">
       
-      {/* === Existing Shapes === */}
+     
       <div>
         <div className="absolute top-10 left-10 w-32 h-32 bg-indigo-300 opacity-20 rounded-full animate-float-slow" />
         <div className="absolute bottom-16 right-16 w-24 h-24 bg-pink-300 opacity-20 rounded-full animate-float-delay" />
@@ -57,7 +57,6 @@ export default function About() {
         })}
       </div>
 
-      {/* === Content === */}
       <section className="max-w-2xl w-full mx-auto text-center relative z-10">
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-indigo-700 animate-heading">
           About Me
@@ -70,7 +69,6 @@ export default function About() {
         </p>
       </section>
 
-      {/* === Styles === */}
       <style jsx>{`
         /* Heading fade + scale */
         .animate-heading {
