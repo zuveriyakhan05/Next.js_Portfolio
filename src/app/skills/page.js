@@ -34,7 +34,6 @@ export default function Skills() {
 
   const categories = ["All", "Frontend", "Backend", "Databases", "Programming Languages", "Tools"];
 
-  // Filter skills based on selected category
   const filteredSkills =
     selectedCategory === "All"
       ? skills
@@ -43,20 +42,14 @@ export default function Skills() {
   return (
     <main className="sm:ml-16 min-h-screen flex items-center justify-center px-4 relative overflow-hidden bg-gradient-to-br from-green-50 to-cyan-50">
 
-      {/* Floating Shapes */}
       <div className="floating-shapes absolute inset-0 pointer-events-none z-0">
-        {/* Circles */}
         <div className="shape circle animate-float" style={{ top: "10%", left: "14%", width: 60, height: 60, backgroundColor: "rgba(255,99,132,0.4)" }} />
         <div className="shape circle animate-float-delay" style={{ top: "70%", left: "21%", width: 38, height: 38, backgroundColor: "rgba(255,99,132,0.3)" }} />
         <div className="shape circle animate-float-alt" style={{ top: "53%", left: "77%", width: 48, height: 48, backgroundColor: "rgba(255,150,100,0.3)" }} />
-        {/* Squares */}
         <div className="shape square animate-rotate" style={{ top: "32%", left: "68%", width: 63, height: 63, backgroundColor: "rgba(54,162,235,0.3)" }} />
         <div className="shape square bounce" style={{ top: "83%", left: "60%", width: 35, height: 35, backgroundColor: "rgba(54,162,235,0.25)" }} />
-        {/* Diamond */}
         <div className="shape square diamond animate-rotate" style={{ top: "18%", left: "54%", width: 50, height: 50, backgroundColor: "rgba(100,120,255,0.3)" }} />
-        {/* Dot */}
         <div className="shape dot animate-orbit" style={{ top: "52%", left: "32%", width: 14, height: 14, backgroundColor: "rgba(75,192,192,0.5)" }} />
-        {/* Triangle */}
         <div className="shape triangle animate-float-alt" style={{
           top: "44%",
           left: "13%",
@@ -66,7 +59,6 @@ export default function Skills() {
           borderRight: "23px solid transparent",
           borderBottom: "40px solid rgba(255,150,100,0.4)"
         }} />
-        {/* Hexagon */}
         <div className="shape hexagon bounce" style={{
           top: "67%",
           left: "82%",
@@ -81,7 +73,6 @@ export default function Skills() {
           My Skills
         </h1>
 
-        {/* Category Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-3 mb-8">
           {categories.map((cat) => (
             <button
@@ -98,7 +89,6 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* Skills Grid */}
         <div className="flex flex-wrap items-center justify-center gap-4">
           {filteredSkills.map((skill, index) => {
             const animationClass =
@@ -125,7 +115,6 @@ export default function Skills() {
         </div>
       </section>
 
-      {/* Animations - Keeping your previous styles */}
       <style jsx>{`
         .floating-shapes { position: absolute; width: 100%; height: 100%; pointer-events: none; }
         .shape { position: absolute; opacity: 0; animation-fill-mode: forwards; animation-name: fadeInOpacity; animation-duration: 1s; animation-timing-function: ease; animation-iteration-count: 1; }
