@@ -1,7 +1,7 @@
 "use client";
 
 export default function About() {
-  const dotsCount = 50; // number of dots
+  const dotsCount = 35; // number of dots
   const dots = Array.from({ length: dotsCount });
 
   // A pastel / soft color palette
