@@ -8,7 +8,6 @@ export default function Projects() {
           Projects
         </h1>
 
-        {/* ==== Development Projects ==== */}
         <h2 className="text-2xl font-bold text-indigo-600 mb-6">Development Projects</h2>
         <div className="grid md:grid-cols-2 gap-6 mb-12">
           <div className="bg-white shadow rounded-lg p-6 text-left">
@@ -81,7 +80,6 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* Animation styles */}
       <style jsx>{`
         .animate-fade-in {
           animation: fadeIn 1s cubic-bezier(.77, 0, .18, 1) both;
