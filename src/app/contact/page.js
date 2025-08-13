@@ -6,7 +6,6 @@ export default function Contact() {
       <section className="max-w-lg w-full mx-auto text-center animate-fade-in">
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-indigo-700">Get in Touch</h1>
         <p className="text-gray-600 mb-8">Feel free to reach out for collaborations or just a friendly hello!</p>
-        {/* You can replace this form with any service or email link */}
         <form className="flex flex-col gap-4 max-w-md mx-auto">
           <input
             type="text"

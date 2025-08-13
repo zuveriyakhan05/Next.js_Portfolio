@@ -3,7 +3,6 @@
 export default function About() {
   return (
     <main className="relative sm:ml-16 min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-purple-50 to-blue-50 overflow-hidden">
-      {/* Decorative floating shapes */}
       <div>
         <div className="absolute top-10 left-10 w-32 h-32 bg-indigo-300 opacity-20 rounded-full animate-float-slow" />
         <div className="absolute bottom-16 right-16 w-24 h-24 bg-pink-300 opacity-20 rounded-full animate-float-delay" />
