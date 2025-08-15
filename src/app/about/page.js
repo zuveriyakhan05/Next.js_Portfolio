@@ -1,10 +1,10 @@
 "use client";
 
 export default function About() {
-  const dotsCount = 10; // number of dots
+  const dotsCount = 10; // number of animated dots
   const dots = Array.from({ length: dotsCount });
 
-  // A pastel / soft color palette
+  // Pastel / soft color palette
   const colors = [
     "rgba(255, 99, 132, 0.7)",   // pink/red
     "rgba(54, 162, 235, 0.7)",   // blue
@@ -15,20 +15,28 @@ export default function About() {
   ];
 
   return (
-    <main className="relative sm:ml-16 min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-purple-50 to-blue-50 overflow-hidden">
+    <main className="relative min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-blue-100 via-pink-50 to-purple-100 overflow-hidden">
       
-     
       <div>
-        <div className="absolute top-10 left-10 w-32 h-32 bg-indigo-300 opacity-20 rounded-full animate-float-slow" />
-        <div className="absolute bottom-16 right-16 w-24 h-24 bg-pink-300 opacity-20 rounded-full animate-float-delay" />
-        <svg
-          className="absolute right-1/3 top-1/4 w-16 h-16 opacity-30 animate-rotate-slow"
-          viewBox="0 0 100 100"
-        >
-          <polygon points="50,10 10,90 90,90" fill="#a78bfa" />
-        </svg>
-      </div>
 
+        <div className="absolute top-10 left-8 w-36 h-36 bg-indigo-300 opacity-20 rounded-full animate-float bounce-slow" />
+        <div className="absolute bottom-20 right-12 w-28 h-28 bg-pink-400 opacity-20 rounded-full animate-float-delay bounce-slow" />
+        <svg className="absolute right-24 top-24 w-28 h-28 opacity-30 animate-float-alt bounce-slower" viewBox="0 0 100 100">
+          <polygon points="50,10 10,90 90,90" fill="#f472b6" />
+        </svg>
+        <div className="absolute left-1/3 bottom-12 w-16 h-16 bg-indigo-200 opacity-20 rounded-lg animate-rotate bounce" />
+        <div className="absolute top-1/2 left-[10%] w-5 h-5 bg-purple-400 opacity-50 rounded-full animate-orbit bounce" />
+
+        
+        <div className="absolute top-16 right-32 w-24 h-24 bg-purple-300 opacity-15 rounded-full animate-float bounce-slower" />
+        <svg className="absolute bottom-28 left-16 w-20 h-20 opacity-25 animate-float-alt bounce" viewBox="0 0 100 100">
+          <polygon points="50,10 10,90 90,90" fill="#c084fc" />
+        </svg>
+        <div className="absolute top-8 left-1/2 -translate-x-1/2 w-20 h-20 bg-pink-300 opacity-20 rounded-lg animate-rotate bounce-slow" />
+
+        <div className="absolute bottom-16 right-24 w-4 h-4 bg-indigo-400 opacity-40 rounded-full animate-orbit bounce-slower" />
+      </div>
+      
       {/* === Colorful Animated Dots === */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {dots.map((_, i) => {
@@ -38,7 +46,6 @@ export default function About() {
           const duration = Math.random() * 10 + 8; // 8 to 18 sec
           const opacity = Math.random() * 0.5 + 0.3; // 0.3 to 0.8
           const color = colors[Math.floor(Math.random() * colors.length)];
-
           return (
             <span
               key={i}
@@ -56,7 +63,6 @@ export default function About() {
           );
         })}
       </div>
-
       <section className="max-w-2xl w-full mx-auto text-center relative z-10">
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-indigo-700 animate-heading">
           About Me
@@ -68,7 +74,6 @@ export default function About() {
           that are both user-friendly and high-performing.
         </p>
       </section>
-
       <style jsx>{`
         /* Heading fade + scale */
         .animate-heading {
@@ -78,7 +83,6 @@ export default function About() {
           0% { opacity: 0; transform: scale(0.8) translateY(-20px); }
           100% { opacity: 1; transform: scale(1) translateY(0); }
         }
-
         /* Paragraph slide-up */
         .animate-paragraph {
           animation: paragraphAnim 1.2s ease forwards;
@@ -89,21 +93,6 @@ export default function About() {
           0% { opacity: 0; transform: translateY(30px); }
           100% { opacity: 1; transform: translateY(0); }
         }
-
-        /* Background shape animations */
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-float-slow { animation: float 10s ease-in-out infinite; }
-        .animate-float-delay { animation: float 8s 2s ease-in-out infinite; }
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
-        }
-        .animate-rotate-slow { animation: rotate 20s linear infinite; }
-        @keyframes rotate {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-
         /* Colorful Dots Animation */
         .dot {
           position: absolute;
