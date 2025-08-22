@@ -1,14 +1,79 @@
 "use client";
+import Sidebar from "@/components/Sidebar"; 
 
 export default function Projects() {
+  // For animated dots
+  const dotsCount = 10; // you can change this value for more/less dots
+  const colors = [
+    "rgba(255, 99, 132, 0.7)",   // pink/red
+    "rgba(54, 162, 235, 0.7)",   // blue
+    "rgba(255, 206, 86, 0.7)",   // yellow
+    "rgba(75, 192, 192, 0.7)",   // teal
+    "rgba(153, 102, 255, 0.7)",  // purple
+    "rgba(255, 159, 64, 0.7)",   // orange
+  ];
+
   return (
-    <main className="sm:ml-16 min-h-screen flex items-center px-4 py-12 bg-gradient-to-br from-pink-50 to-purple-100">
-      <section className="max-w-5xl w-full mx-auto text-center animate-fade-in">
+    <main className="relative sm:ml-16 min-h-screen flex items-center px-4 py-12 bg-gradient-to-br from-pink-50 to-purple-100 overflow-hidden">
+      {/* = Decorative Animated Shapes = */}
+      <div>
+        {/* Large top-left circle */}
+        <div className="absolute top-8 left-8 w-36 h-36 bg-indigo-300 opacity-20 rounded-full animate-float" />
+        {/* Top-right triangle */}
+        <svg className="absolute right-20 top-24 w-24 h-24 opacity-30 animate-float-alt" viewBox="0 0 100 100">
+          <polygon points="50,10 10,90 90,90" fill="#f472b6" />
+        </svg>
+        {/* Bottom-left triangle */}
+        <svg className="absolute bottom-20 left-16 w-20 h-20 opacity-20 animate-float" viewBox="0 0 100 100">
+          <polygon points="50,10 10,90 90,90" fill="#c084fc" />
+        </svg>
+        {/* Bottom-right circle */}
+        <div className="absolute bottom-12 right-20 w-24 h-24 bg-pink-400 opacity-20 rounded-full animate-float-delay" />
+        {/* Center spinning square */}
+        <div className="absolute left-1/3 bottom-10 w-16 h-16 bg-indigo-200 opacity-20 rounded-lg animate-rotate" />
+        {/* Floating dot (top-middle) */}
+        <div className="absolute top-1/2 left-[10%] w-5 h-5 bg-purple-400 opacity-50 rounded-full animate-orbit" />
+        {/* Top-right small circle */}
+        <div className="absolute top-16 right-32 w-24 h-24 bg-purple-300 opacity-10 rounded-full animate-float" />
+        {/* Top-center pastel square */}
+        <div className="absolute top-8 left-1/2 -translate-x-1/2 w-20 h-20 bg-pink-300 opacity-20 rounded-lg animate-rotate" />
+        {/* Bottom-right tiny circle */}
+        <div className="absolute bottom-16 right-28 w-4 h-4 bg-indigo-400 opacity-40 rounded-full animate-orbit" />
+      </div>
+
+      {/* === Colorful Animated Dots === */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        {Array.from({ length: dotsCount }).map((_, i) => {
+          const size = Math.random() * 8 + 4;    // 4px to 12px
+          const left = Math.random() * 100;      // %
+          const delay = Math.random() * 10;      // sec
+          const duration = Math.random() * 10 + 8; // 8 to 18 sec
+          const opacity = Math.random() * 0.5 + 0.3; // 0.3 to 0.8
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          return (
+            <span
+              key={i}
+              className="dot"
+              style={{
+                width: size,
+                height: size,
+                left: `${left}%`,
+                background: color,
+                animationDelay: `${delay}s`,
+                animationDuration: `${duration}s`,
+                opacity: opacity,
+              }}
+            />
+          );
+        })}
+      </div>
+
+      <Sidebar />
+
+      <section className="max-w-5xl w-full mx-auto text-center animate-fade-in relative z-10">
         <h1 className="text-4xl md:text-5xl font-bold mb-10 text-indigo-700">
           Projects
         </h1>
-
-        {/* Development Projects */}
         <div className="grid md:grid-cols-2 gap-6 mb-12">
           <div className="bg-white shadow rounded-lg p-6 text-left">
             <h3 className="font-bold text-lg text-indigo-700 mb-2">React Developer Portfolio</h3>
@@ -35,13 +100,13 @@ export default function Projects() {
                 </svg>
               </a>
               <a
-                href="https://github.com/yourusername/react-portfolio"
+                href="https://github.com/zuveriyakhan05/Zuveriya_Portfolio.git"
                 target="_blank"
                 rel="noopener"
                 className="text-gray-700 hover:text-gray-900"
                 aria-label="Source Code on GitHub"
               >
-                {/* Fixed GitHub Icon */}
+                {/* GitHub Icon */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6 inline"
@@ -54,7 +119,6 @@ export default function Projects() {
             </div>
           </div>
         </div>
-
         {/* Designer Projects */}
         <div className="grid md:grid-cols-2 gap-6 mb-12">
           <div className="bg-white shadow rounded-lg p-6 text-left">
@@ -69,27 +133,18 @@ export default function Projects() {
                 aria-label="View in Figma"
               >
                 {/* Figma icon */}
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="60" viewBox="0 0 40 60" fill="none" className="h-6 w-6 inline">
-  {/* Top red rounded-rect */}
-  <rect x="0" y="0" width="20" height="20" rx="10" fill="#F24E1E"/>
-  {/* Middle purple rounded-rect */}
-  <rect x="0" y="20" width="20" height="20" rx="10" fill="#A259FF"/>
-  {/* Bottom green rounded-rect */}
-  <rect x="0" y="40" width="20" height="20" rx="10" fill="#0ACF83"/>
-  {/* Top-right pink rounded-rect */}
-  <rect x="20" y="0" width="20" height="20" rx="10" fill="#FF7262"/>
-  {/* Bottom-right blue circle */}
-  <circle cx="30" cy="30" r="10" fill="#1ABCFE"/>
-</svg>
-
-
-
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="60" viewBox="0 0 40 60" fill="none" className="h-6 w-6 inline">
+                  <rect x="0" y="0" width="20" height="20" rx="10" fill="#F24E1E"/>
+                  <rect x="0" y="20" width="20" height="20" rx="10" fill="#A259FF"/>
+                  <rect x="0" y="40" width="20" height="20" rx="10" fill="#0ACF83"/>
+                  <rect x="20" y="0" width="20" height="20" rx="10" fill="#FF7262"/>
+                  <circle cx="30" cy="30" r="10" fill="#1ABCFE"/>
+                </svg>
               </a>
             </div>
           </div>
         </div>
       </section>
-
       {/* Animation styles */}
       <style jsx>{`
         .animate-fade-in {
@@ -104,6 +159,55 @@ export default function Projects() {
             opacity: 1;
             transform: translateY(0);
           }
+        }
+        /* Animated shapes */
+        .animate-float {
+          animation: float 10s ease-in-out infinite;
+        }
+        .animate-float-delay {
+          animation: float 12s 2s ease-in-out infinite;
+        }
+        .animate-float-alt {
+          animation: floatAlt 14s 1s ease-in-out infinite;
+        }
+        .animate-rotate {
+          animation: rotate 18s linear infinite;
+        }
+        .animate-orbit {
+          animation: orbit 8s linear infinite;
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0px);}
+          50% { transform: translateY(-24px);}
+        }
+        @keyframes floatAlt {
+          0%, 100% { transform: translateY(0px);}
+          50% { transform: translateY(32px);}
+        }
+        @keyframes rotate {
+          from { transform: rotate(0deg);}
+          to { transform: rotate(360deg);}
+        }
+        @keyframes orbit {
+          0% { transform: rotate(0deg) translateX(0);}
+          100% { transform: rotate(360deg) translateX(16px);}
+        }
+        /* Colorful Dots Animation */
+        .dot {
+          position: absolute;
+          bottom: -12px;
+          border-radius: 50%;
+          filter: blur(2px);
+          animation-name: floatUp;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+        }
+        @keyframes floatUp {
+          0% { transform: translateY(0px) scale(1); opacity: 0; }
+          10% { opacity: 1; }
+          50% { transform: translateY(-50vh) scale(1.2); }
+          90% { opacity: 1; }
+          100% { transform: translateY(-110vh) scale(0.8); opacity: 0; }
         }
       `}</style>
     </main>

@@ -1,4 +1,6 @@
 "use client";
+import Sidebar from "@/components/Sidebar"; 
+
 
 export default function Contact() {
   const dotsCount = 10;
@@ -14,7 +16,7 @@ export default function Contact() {
 
   return (
     <main className="sm:ml-16 min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-indigo-50 to-pink-50 relative overflow-hidden">
-      
+      <Sidebar />
       {/* Colorful Animated Dots */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {dots.map((_, i) => {
