@@ -1,7 +1,6 @@
 "use client";
 
 export default function Hero() {
-  // Dots setup
   const dotsCount = 10;
   const dotColors = [
     "rgba(255, 99, 132, 0.7)",   // pink/red
@@ -14,7 +13,6 @@ export default function Hero() {
 
   return (
     <section className="relative w-full min-h-screen h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-pink-100 to-purple-100 overflow-hidden">
-      {/* Geometric Animated Shapes */}
       <div>
         <div className="absolute top-10 left-8 w-36 h-36 bg-indigo-300 opacity-20 rounded-full animate-float bounce-slow" />
         <div className="absolute bottom-20 right-12 w-28 h-28 bg-pink-400 opacity-20 rounded-full animate-float-delay bounce-slow" />
@@ -31,7 +29,6 @@ export default function Hero() {
         <div className="absolute bottom-16 right-24 w-4 h-4 bg-indigo-400 opacity-40 rounded-full animate-orbit bounce-slower" />
       </div>
 
-      {/* Colorful Animated Dots */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {Array.from({ length: dotsCount }).map((_, i) => {
           const size = Math.random() * 8 + 4;
