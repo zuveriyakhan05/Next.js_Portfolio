@@ -70,7 +70,7 @@ export default function About() {
           About Me
         </h1>
         <p className="text-lg md:text-xl text-gray-600 leading-relaxed animate-paragraph">
-          Hi, I'm <span className="font-bold text-indigo-500">Zuveriya Khan</span> — I’m a passionate Full-Stack Developer 🧑‍💻 and UI/UX Designer 🎨 currently pursuing
+          Hi, I&apos;m  <span className="font-bold text-indigo-500">Zuveriya Khan</span> — I’m a passionate Full-Stack Developer 🧑‍💻 and UI/UX Designer 🎨 currently pursuing
           a B.Tech in Computer Science Engineering at Rai University 🎓.
           I merge intuitive design with powerful development to craft digital experiences
           that are both user-friendly and high-performing.
