@@ -56,7 +56,7 @@ export default function Hero() {
 
       <div className="relative z-10 text-center px-4 max-w-2xl mx-auto">
         <h1 className="text-4xl md:text-6xl font-extrabold mb-4 animate-fade-down scale-up">
-          Hi, I'm <span className="text-indigo-600 drop-shadow-lg">Zuveriya Khan</span>
+          Hi, I&apos;m <span className="text-indigo-600 drop-shadow-lg">Zuveriya Khan</span>
         </h1>
         <h2 className="text-xl md:text-2xl font-medium text-gray-700 text-gray-200 mb-4 animate-fade scale-up delay-150">
           Creative Designer &amp; Developer
