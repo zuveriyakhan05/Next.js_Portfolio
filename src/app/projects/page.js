@@ -3,7 +3,7 @@ import Sidebar from "@/components/Sidebar";
 
 export default function Projects() {
   // For animated dots
-  const dotsCount = 10; // you can change this value for more/less dots
+  const dotsCount = 10;
   const colors = [
     "rgba(255, 99, 132, 0.7)",   // pink/red
     "rgba(54, 162, 235, 0.7)",   // blue
@@ -44,9 +44,9 @@ export default function Projects() {
       {/* === Colorful Animated Dots === */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {Array.from({ length: dotsCount }).map((_, i) => {
-          const size = Math.random() * 8 + 4;    // 4px to 12px
-          const left = Math.random() * 100;      // %
-          const delay = Math.random() * 10;      // sec
+          const size = Math.random() * 8 + 4; // 4px to 12px
+          const left = Math.random() * 100;   // %
+          const delay = Math.random() * 10;   // sec
           const duration = Math.random() * 10 + 8; // 8 to 18 sec
           const opacity = Math.random() * 0.5 + 0.3; // 0.3 to 0.8
           const color = colors[Math.floor(Math.random() * colors.length)];
@@ -75,6 +75,7 @@ export default function Projects() {
           Projects
         </h1>
         <div className="grid md:grid-cols-2 gap-6 mb-12">
+          {/* Project 1 */}
           <div className="bg-white shadow rounded-lg p-6 text-left">
             <h3 className="font-bold text-lg text-indigo-700 mb-2">React Developer Portfolio</h3>
             <p className="text-gray-600 mb-2">
@@ -88,13 +89,12 @@ export default function Projects() {
                 className="text-indigo-500 hover:text-indigo-700"
                 aria-label="Live Demo"
               >
-                {/* Play button icon for Live Demo */}
                 <svg xmlns="http://www.w3.org/2000/svg" 
-                     className="h-6 w-6 inline" 
-                     fill="none" 
-                     viewBox="0 0 24 24" 
-                     stroke="currentColor" 
-                     strokeWidth={2}>
+                  className="h-6 w-6 inline" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor" 
+                  strokeWidth={2}>
                   <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth={2} />
                   <path strokeLinecap="round" strokeLinejoin="round" d="M10 8l6 4-6 4V8z" />
                 </svg>
@@ -106,7 +106,90 @@ export default function Projects() {
                 className="text-gray-700 hover:text-gray-900"
                 aria-label="Source Code on GitHub"
               >
-                {/* GitHub Icon */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 inline"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M12 2C6.475 2 2 6.475 2 12c0 4.418 2.865 8.166 6.839 9.489.5.091.682-.217.682-.483 0-.238-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.607.069-.607 1.004.07 1.532 1.031 1.532 1.031.893 1.53 2.341 1.089 2.91.833.091-.647.35-1.089.636-1.34-2.22-.252-4.555-1.112-4.555-4.951 0-1.093.39-1.987 1.029-2.687-.103-.253-.447-1.27.098-2.648 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0112 6.845a9.6 9.6 0 012.504.336c1.91-1.294 2.748-1.025 2.748-1.025.546 1.378.202 2.395.099 2.648.64.7 1.028 1.594 1.028 2.687 0 3.848-2.338 4.697-4.566 4.945.359.309.679.92.679 1.855 0 1.339-.012 2.422-.012 2.751 0 .268.18.577.688.48C19.138 20.162 22 16.417 22 12c0-5.525-4.475-10-10-10z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Project 2 on right side */}
+          {/* <div className="bg-white shadow rounded-lg p-6 text-left">
+            <h3 className="font-bold text-lg text-indigo-700 mb-2">Task Manager App</h3>
+            <p className="text-gray-600 mb-2">
+              A full-stack MERN app to manage daily tasks with authentication and beautiful dashboard UI.
+            </p>
+            <div className="flex items-center gap-4">
+              <a
+                href="https://your-task-manager-live-link.com"
+                target="_blank"
+                rel="noopener"
+                className="text-indigo-500 hover:text-indigo-700"
+                aria-label="Live Demo"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 inline"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}>
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth={2} />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 8l6 4-6 4V8z" />
+                </svg>
+              </a>
+              <a
+                href="https://github.com/zuveriyakhan05/task-manager-app"
+                target="_blank"
+                rel="noopener"
+                className="text-gray-700 hover:text-gray-900"
+                aria-label="Source Code on GitHub"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 inline"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M12 2C6.475 2 2 6.475 2 12c0 4.418 2.865 8.166 6.839 9.489.5.091.682-.217.682-.483 0-.238-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.607.069-.607 1.004.07 1.532 1.031 1.532 1.031.893 1.53 2.341 1.089 2.91.833.091-.647.35-1.089.636-1.34-2.22-.252-4.555-1.112-4.555-4.951 0-1.093.39-1.987 1.029-2.687-.103-.253-.447-1.27.098-2.648 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0112 6.845a9.6 9.6 0 012.504.336c1.91-1.294 2.748-1.025 2.748-1.025.546 1.378.202 2.395.099 2.648.64.7 1.028 1.594 1.028 2.687 0 3.848-2.338 4.697-4.566 4.945.359.309.679.92.679 1.855 0 1.339-.012 2.422-.012 2.751 0 .268.18.577.688.48C19.138 20.162 22 16.417 22 12c0-5.525-4.475-10-10-10z"/>
+                </svg>
+              </a>
+            </div>
+          </div> */}
+
+          {/* Project 3 on right side next row */}
+          <div className="bg-white shadow rounded-lg p-6 text-left">
+            <h3 className="font-bold text-lg text-indigo-700 mb-2"> Next.js Designer Portfolio</h3>
+            <p className="text-gray-600 mb-2">A responsive, animated portfolio site made with Next.js and Tailwind CSS.            </p>
+            <div className="flex items-center gap-4">
+              <a
+                href="https://next-js-portfolio-uciy-zuveriyakhan05s-projects.vercel.app/"
+                target="_blank"
+                rel="noopener"
+                className="text-indigo-500 hover:text-indigo-700"
+                aria-label="Live Demo"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 inline"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}>
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth={2} />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 8l6 4-6 4V8z" />
+                </svg>
+              </a>
+              <a
+                href="https://github.com/zuveriyakhan05/Next.js_Portfolio.git"
+                target="_blank"
+                rel="noopener"
+                className="text-gray-700 hover:text-gray-900"
+                aria-label="Source Code on GitHub"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6 inline"
@@ -119,6 +202,7 @@ export default function Projects() {
             </div>
           </div>
         </div>
+
         {/* Designer Projects */}
         <div className="grid md:grid-cols-2 gap-6 mb-12">
           <div className="bg-white shadow rounded-lg p-6 text-left">
@@ -132,7 +216,6 @@ export default function Projects() {
                 className="text-indigo-500 hover:text-indigo-700"
                 aria-label="View in Figma"
               >
-                {/* Figma icon */}
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="60" viewBox="0 0 40 60" fill="none" className="h-6 w-6 inline">
                   <rect x="0" y="0" width="20" height="20" rx="10" fill="#F24E1E"/>
                   <rect x="0" y="20" width="20" height="20" rx="10" fill="#A259FF"/>
