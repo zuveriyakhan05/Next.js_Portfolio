@@ -1,5 +1,6 @@
 "use client";
 import Sidebar from "@/components/Sidebar";
+import ThemeToggle from "@/components/ThemeToggle";
 import { useEffect, useState } from "react";
 
 export default function Skills() {
@@ -53,6 +54,7 @@ export default function Skills() {
   return (
     <main className="sm:ml-16 min-h-screen flex items-center justify-center px-4 relative overflow-hidden bg-gradient-to-br from-green-50 to-cyan-50">
       <Sidebar />
+      <ThemeToggle />
 
       {/* Floating animated shapes */}
       <div className="floating-shapes absolute inset-0 pointer-events-none z-0">

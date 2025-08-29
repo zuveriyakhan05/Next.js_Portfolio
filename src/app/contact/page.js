@@ -1,5 +1,6 @@
 "use client";
 import Sidebar from "@/components/Sidebar";
+import ThemeToggle from "@/components/ThemeToggle";
 import { useState } from "react";
 
 export default function Contact() {
@@ -15,7 +16,6 @@ export default function Contact() {
   ];
   const [status, setStatus] = useState("");
 
-  // Custom submit handler for Formspree (no page reload)
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("Sending...");
@@ -43,6 +43,7 @@ export default function Contact() {
   return (
     <main className="sm:ml-16 min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-indigo-50 to-pink-50 relative overflow-hidden">
       <Sidebar />
+      <ThemeToggle />
       {/* Colorful Animated Dots */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {dots.map((_, i) => {

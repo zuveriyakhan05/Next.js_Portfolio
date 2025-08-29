@@ -1,5 +1,7 @@
 "use client";
 import Sidebar from "@/components/Sidebar"; 
+import ThemeToggle from "@/components/ThemeToggle";
+
 
 
 export default function About() {
@@ -19,6 +21,7 @@ export default function About() {
   return (
     <main className="relative min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-blue-100 via-pink-50 to-purple-100 overflow-hidden">
       <Sidebar />
+      <ThemeToggle />
       <div>
 
         <div className="absolute top-10 left-8 w-36 h-36 bg-indigo-300 opacity-20 rounded-full animate-float bounce-slow" />

@@ -1,5 +1,6 @@
 "use client";
 import Sidebar from "@/components/Sidebar"; 
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Projects() {
   // For animated dots
@@ -15,29 +16,19 @@ export default function Projects() {
 
   return (
     <main className="relative sm:ml-16 min-h-screen flex items-center px-4 py-12 bg-gradient-to-br from-pink-50 to-purple-100 overflow-hidden">
-      {/* = Decorative Animated Shapes = */}
       <div>
-        {/* Large top-left circle */}
         <div className="absolute top-8 left-8 w-36 h-36 bg-indigo-300 opacity-20 rounded-full animate-float" />
-        {/* Top-right triangle */}
         <svg className="absolute right-20 top-24 w-24 h-24 opacity-30 animate-float-alt" viewBox="0 0 100 100">
           <polygon points="50,10 10,90 90,90" fill="#f472b6" />
         </svg>
-        {/* Bottom-left triangle */}
         <svg className="absolute bottom-20 left-16 w-20 h-20 opacity-20 animate-float" viewBox="0 0 100 100">
           <polygon points="50,10 10,90 90,90" fill="#c084fc" />
         </svg>
-        {/* Bottom-right circle */}
         <div className="absolute bottom-12 right-20 w-24 h-24 bg-pink-400 opacity-20 rounded-full animate-float-delay" />
-        {/* Center spinning square */}
         <div className="absolute left-1/3 bottom-10 w-16 h-16 bg-indigo-200 opacity-20 rounded-lg animate-rotate" />
-        {/* Floating dot (top-middle) */}
         <div className="absolute top-1/2 left-[10%] w-5 h-5 bg-purple-400 opacity-50 rounded-full animate-orbit" />
-        {/* Top-right small circle */}
         <div className="absolute top-16 right-32 w-24 h-24 bg-purple-300 opacity-10 rounded-full animate-float" />
-        {/* Top-center pastel square */}
         <div className="absolute top-8 left-1/2 -translate-x-1/2 w-20 h-20 bg-pink-300 opacity-20 rounded-lg animate-rotate" />
-        {/* Bottom-right tiny circle */}
         <div className="absolute bottom-16 right-28 w-4 h-4 bg-indigo-400 opacity-40 rounded-full animate-orbit" />
       </div>
 
@@ -69,6 +60,7 @@ export default function Projects() {
       </div>
 
       <Sidebar />
+      <ThemeToggle />
 
       <section className="max-w-5xl w-full mx-auto text-center animate-fade-in relative z-10">
         <h1 className="text-4xl md:text-5xl font-bold mb-10 text-indigo-700">
@@ -228,7 +220,6 @@ export default function Projects() {
           </div>
         </div>
       </section>
-      {/* Animation styles */}
       <style jsx>{`
         .animate-fade-in {
           animation: fadeIn 1s cubic-bezier(0.77, 0, 0.18, 1) both;
