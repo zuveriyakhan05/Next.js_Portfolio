@@ -1,45 +1,43 @@
 "use client";
 import Sidebar from "@/components/Sidebar";
-import { useRef, useState } from "react";
-import emailjs from "emailjs-com";
+import { useState } from "react";
 
 export default function Contact() {
-  const form = useRef(null);
-  const [result, setResult] = useState("");
-
   const dotsCount = 10;
   const dots = Array.from({ length: dotsCount });
   const colors = [
-    "rgba(255, 99, 132, 0.7)",   // pink
-    "rgba(54, 162, 235, 0.7)",   // blue
-    "rgba(255, 206, 86, 0.7)",   // yellow
-    "rgba(75, 192, 192, 0.7)",   // teal
-    "rgba(153, 102, 255, 0.7)",  // purple
-    "rgba(255, 159, 64, 0.7)",   // orange
+    "rgba(255, 99, 132, 0.7)",
+    "rgba(54, 162, 235, 0.7)",
+    "rgba(255, 206, 86, 0.7)",
+    "rgba(75, 192, 192, 0.7)",
+    "rgba(153, 102, 255, 0.7)",
+    "rgba(255, 159, 64, 0.7)",
   ];
+  const [status, setStatus] = useState("");
 
-  // EmailJS details — replace with your actual values
-  const SERVICE_ID = "service_hixhues";
-  const TEMPLATE_ID = "template_00qb1cg";
-  const PUBLIC_KEY = "2xQkRQ9NdTJ2K-PLc";
-
-  // Handle form submit
+  // Custom submit handler for Formspree (no page reload)
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setResult("Sending...");
+    setStatus("Sending...");
+    const form = e.target;
+    const data = new FormData(form);
+
     try {
-      await emailjs.sendForm(
-        SERVICE_ID,
-        TEMPLATE_ID,
-        form.current,
-        PUBLIC_KEY
-      );
-      setResult("Message sent! ✅");
-      form.current.reset();
-    } catch (error) {
-      setResult("Failed to send. Try again?");
+      const response = await fetch("https://formspree.io/f/xrbaeavn", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      });
+      if (response.ok) {
+        setStatus("Thanks for sending your message!");
+        form.reset();
+      } else {
+        setStatus("Something went wrong. Please try again.");
+      }
+    } catch {
+      setStatus("Could not send. Please try again.");
     }
-    setTimeout(() => setResult(""), 5000);
+    setTimeout(() => setStatus(""), 5000);
   };
 
   return (
@@ -132,37 +130,50 @@ export default function Contact() {
 
       <section className="max-w-lg w-full mx-auto text-center animate-fade-in relative z-10">
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-indigo-700">Get in Touch</h1>
-        <p className="text-gray-600 mb-8">&quot;Let&apos;s create something great! ✨ I&apos;m always open to new projects and collaborations.&quot; 🛠️ Let&apos;s connect and discuss exciting new opportunities.&quot;</p>
-        <form ref={form} onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-md mx-auto">
-          <input
-            type="text"
-            name="user_name"
-            placeholder="Your Name"
-            required
-            className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-300"
-          />
-          <input
-            type="email"
-            name="user_email"
-            placeholder="Your Email"
-            required
-            className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-300"
-          />
-          <textarea
-            name="message"
-            rows={4}
-            placeholder="Your Message"
-            required
-            className="px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-300"
-          />
+        <p className="text-gray-600 mb-8">
+          "Let's create something great! ✨ I'm always open to new projects and collaborations."
+          🛠️ Let's connect and discuss exciting new opportunities."
+        </p>
+
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-4 max-w-md mx-auto"
+        >
+          <label className="text-left font-medium">
+            Your name:
+            <input
+              type="text"
+              name="name"
+              required
+              className="mt-2 px-4 py-2 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-indigo-300"
+            />
+          </label>
+          <label className="text-left font-medium">
+            Your email:
+            <input
+              type="email"
+              name="email"
+              required
+              className="mt-2 px-4 py-2 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-indigo-300"
+            />
+          </label>
+          <label className="text-left font-medium">
+            Your message:
+            <textarea
+              name="message"
+              required
+              rows={4}
+              className="mt-2 px-4 py-2 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-indigo-300"
+            />
+          </label>
           <button
             type="submit"
             className="mt-2 px-6 py-2 bg-indigo-600 text-white rounded font-semibold hover:bg-indigo-700 transition"
           >
-            Send Message
+            Send
           </button>
-          {result && (
-            <p className="text-sm mt-2 font-medium">{result}</p>
+          {status && (
+            <p className="mt-4 font-semibold text-indigo-600">{status}</p>
           )}
         </form>
       </section>
