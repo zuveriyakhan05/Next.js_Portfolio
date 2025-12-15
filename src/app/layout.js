@@ -1,6 +1,7 @@
 
 
 import "./globals.css";
+import Providers from "../components/Providers";
 
 export const metadata = {
   title: "Zuveriya Portfolio",
@@ -11,10 +12,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="min-h-screen flex">
-        <main className="flex-1">
-          {children}
-          
-        </main>
+        <Providers>
+          <main className="flex-1">{children}</main>
+        </Providers>
       </body>
     </html>
   );
