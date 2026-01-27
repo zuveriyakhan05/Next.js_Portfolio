@@ -1,5 +1,4 @@
 "use client";
-
 export default function Hero() {
   const dotsCount = 10;
   const dotColors = [
