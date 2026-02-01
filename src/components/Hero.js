@@ -81,12 +81,24 @@ export default function Hero() {
         <p className="text-gray-600 mb-8">
           I design stunning interfaces and seamless digital experiences.
         </p>
-        <a
-          href="/projects"
-          className="inline-block px-8 py-3 bg-indigo-600 text-white font-semibold rounded-full shadow-md hover:bg-indigo-700 transition"
-        >
-          View My Work
-        </a>
+       <div className="flex flex-col sm:flex-row gap-6 justify-center">
+  <a
+    href="/projects"
+    className="px-8 py-3 bg-indigo-600 text-white font-semibold rounded-full shadow-md hover:bg-indigo-700 transition"
+  >
+    View My Work
+  </a>
+
+  <a
+    href="/resume.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="px-8 py-3 border-2 border-indigo-600 text-indigo-600 font-semibold rounded-full shadow-md hover:bg-indigo-600 hover:text-white transition"
+  >
+    Download Resume
+  </a>
+</div>
+
       </div>
 
       <style jsx>{`
