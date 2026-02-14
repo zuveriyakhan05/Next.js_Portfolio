@@ -2,8 +2,6 @@
 import Sidebar from "@/components/Sidebar"; 
 import ThemeToggle from "@/components/ThemeToggle";
 
-
-
 export default function About() {
   const dotsCount = 10; // number of animated dots
   const dots = Array.from({ length: dotsCount });
