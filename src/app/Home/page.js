@@ -3,7 +3,6 @@
 import Head from 'next/head';
 import Sidebar from '@/components/Sidebar';
 import Hero from '@/components/Hero';
-import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Home() {
   return (
@@ -13,7 +12,6 @@ export default function Home() {
       </Head>
       <div className="container">
         <Sidebar />
-        <ThemeToggle />
         <Hero />
       </div>
       <style jsx global>{`

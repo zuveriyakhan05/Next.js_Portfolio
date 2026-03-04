@@ -1,160 +1,115 @@
 "use client";
 
+import { motion } from "framer-motion";
+
 export default function Hero() {
-  const dotsCount = 10;
-  const dotColors = [
-    "rgba(255, 99, 132, 0.7)",   // pink/red
-    "rgba(54, 162, 235, 0.7)",   // blue
-    "rgba(255, 206, 86, 0.7)",   // yellow
-    "rgba(75, 192, 192, 0.7)",   // teal
-    "rgba(153, 102, 255, 0.7)",  // purple
-    "rgba(255, 159, 64, 0.7)",   // orange
-  ];
-
   return (
-    <section className="relative w-full min-h-screen h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-pink-100 to-purple-100 overflow-hidden">
-      {/* Floating shapes */}
-      <div>
-        <div className="absolute top-10 left-8 w-36 h-36 bg-indigo-300 opacity-20 rounded-full animate-floating bounce-slow" />
-        <div className="absolute bottom-20 right-12 w-28 h-28 bg-pink-400 opacity-20 rounded-full animate-floating bounce-slow animate-delay" />
-        <svg className="absolute right-24 top-24 w-28 h-28 opacity-30 animate-floating bounce-slower" viewBox="0 0 100 100">
-          <polygon points="50,10 10,90 90,90" fill="#f472b6" />
-        </svg>
-        <div className="absolute left-1/3 bottom-12 w-16 h-16 bg-indigo-200 opacity-20 rounded-lg animate-rotating bounce" />
-        <div className="absolute top-1/2 left-[10%] w-5 h-5 bg-purple-400 opacity-50 rounded-full animate-orbit bounce" />
-        <div className="absolute top-16 right-32 w-24 h-24 bg-purple-300 opacity-15 rounded-full animate-floating bounce-slower" />
-        <svg className="absolute bottom-28 left-16 w-20 h-20 opacity-25 animate-floating bounce" viewBox="0 0 100 100">
-          <polygon points="50,10 10,90 90,90" fill="#c084fc" />
-        </svg>
-        <div className="absolute top-8 left-1/2 -translate-x-1/2 w-20 h-20 bg-pink-300 opacity-20 rounded-lg animate-rotating bounce-slow" />
-        <div className="absolute bottom-16 right-24 w-4 h-4 bg-indigo-400 opacity-40 rounded-full animate-orbit bounce-slower" />
+    <section className="relative min-h-screen w-full flex items-center bg-[#f4f1ee] overflow-hidden px-6">
+
+      {/* Soft Artistic Background Layers */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-200 opacity-30 blur-[140px]" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-pink-200 opacity-30 blur-[120px]" />
       </div>
 
-      {/* Colored dots */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        {Array.from({ length: dotsCount }).map((_, i) => {
-          const size = Math.random() * 8 + 4;
-          const left = Math.random() * 100;
-          const delay = Math.random() * 6;
-          const opacity = Math.random() * 0.5 + 0.3;
-          const color = dotColors[Math.floor(Math.random() * dotColors.length)];
-          return (
-            <span
-              key={i}
-              className="dot"
-              style={{
-                width: size,
-                height: size,
-                left: `${left}%`,
-                background: color,
-                animationDelay: `${delay}s`,
-                animationDuration: "12s",
-                opacity,
-              }}
-            />
-          );
-        })}
-      </div>
+      {/* Main Layout */}
+      <div className="relative z-10 max-w-6xl mx-auto w-full grid md:grid-cols-2 items-center gap-16">
 
-      <div className="relative z-10 text-center px-4 max-w-2xl mx-auto">
-        <h1
-          className="text-5xl font-extrabold mb-4"
-          style={{ fontFamily: "'Raleway', sans-serif" }}
-        >
-          Hi, I'm{" "}
-          <span
-            style={{
-              fontFamily: "Frijole, system-ui",
-              fontWeight: "400",
-              fontSize: "5rem",
-              display: "inline-block",
-              verticalAlign: "baseline",
-              color: '#4F46E5' /* indigo-600 */
-            }}
+        {/* LEFT SIDE */}
+        <div>
+
+          {/* Vertical Accent Line */}
+          <div className="flex items-start gap-6">
+            <div className="w-[3px] h-40 bg-indigo-600 mt-2" />
+
+            <div>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-sm tracking-[0.3em] uppercase text-gray-500 mb-4"
+              >
+                Designer & Developer Portfolio
+              </motion.p>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1 }}
+                className="text-5xl md:text-7xl font-light text-gray-900 leading-[1.1]"
+              >
+                I design <br />
+                with <span className="italic font-semibold text-indigo-600">emotion</span> <br />
+                & intention.
+              </motion.h1>
+            </div>
+          </div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="mt-10 text-lg text-gray-600 max-w-lg leading-relaxed"
           >
-            Zuveriya Khan
-          </span>
-        </h1>
-        <h2 className="text-2xl font-medium text-gray-700 mb-4">
-          Creative Designer & Developer
-        </h2>
-        <p className="text-gray-600 mb-8">
-          I design stunning interfaces and seamless digital experiences.
-        </p>
-       <div className="flex flex-col sm:flex-row gap-6 justify-center">
-  <a
-    href="/projects"
-    className="px-8 py-3 bg-indigo-600 text-white font-semibold rounded-full shadow-md hover:bg-indigo-700 transition"
-  >
-    View My Work
-  </a>
+            Hi, I’m <span className="font-semibold">Zuveriya Khan</span> —
+            a creative designer & developer crafting meaningful digital
+            experiences that feel human, elegant and alive.
+          </motion.p>
 
-  <a
-    href="/resume.pdf"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="px-8 py-3 border-2 border-indigo-600 text-indigo-600 font-semibold rounded-full shadow-md hover:bg-indigo-600 hover:text-white transition"
-  >
-    Download Resume
-  </a>
-</div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.9 }}
+            className="mt-10 flex gap-6"
+          >
+            <motion.a
+              whileHover={{ x: 5 }}
+              whileTap={{ scale: 0.97 }}
+              href="/projects"
+              className="text-indigo-600 font-semibold text-lg relative group"
+            >
+              View Projects
+              <span className="block h-[2px] bg-indigo-600 w-0 group-hover:w-full transition-all duration-300 mt-1" />
+            </motion.a>
+
+            <motion.a
+              whileHover={{ x: 5 }}
+              whileTap={{ scale: 0.97 }}
+              href="/Pathan Zuveriya.pdf"
+              target="_blank"
+              className="text-gray-700 font-semibold text-lg relative group"
+            >
+              Resume
+              <span className="block h-[2px] bg-gray-700 w-0 group-hover:w-full transition-all duration-300 mt-1" />
+            </motion.a>
+          </motion.div>
+        </div>
+
+        {/* RIGHT SIDE - Profile Portrait */}
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          className="hidden md:flex justify-center items-center"
+        >
+          <div className="relative">
+
+            {/* Soft Glow */}
+            <div className="absolute inset-0 rounded-full bg-indigo-300 blur-3xl opacity-30 scale-110" />
+
+            {/* Profile Image */}
+            <motion.img
+              whileHover={{ scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 200 }}
+              src="/profile.jpg"
+              alt="Zuveriya Khan"
+              className="relative w-[340px] h-[340px] object-cover rounded-full shadow-2xl border-4 border-white"
+            />
+
+          </div>
+        </motion.div>
 
       </div>
-
-      <style jsx>{`
-        .animate-floating {
-          animation: float 7s ease-in-out infinite;
-        }
-        .animate-delay {
-          animation-delay: 2s;
-        }
-        .animate-rotating {
-          animation: rotate 12s linear infinite;
-        }
-        .animate-orbit {
-          animation: orbit 8s linear infinite;
-        }
-        .bounce {
-          animation: bounce 3s ease-in-out infinite;
-        }
-        .bounce-slow {
-          animation: bounce 6s ease-in-out infinite;
-        }
-        .bounce-slower {
-          animation: bounce 9s ease-in-out infinite;
-        }
-        @keyframes float {
-          0%, 100% { transform: translateY(0);}
-          50% { transform: translateY(-24px);}
-        }
-        @keyframes rotate {
-          from { transform: rotate(0);}
-          to { transform: rotate(360deg);}
-        }
-        @keyframes orbit {
-          0% { transform: rotate(0) translateX(100px);}
-          100% { transform: rotate(360deg) translateX(100px);}
-        }
-        @keyframes bounce {
-          0%, 100% { transform: translateY(0);}
-          50% { transform: translateY(-10px);}
-        }
-        .dot {
-          position: absolute;
-          bottom: -12px;
-          border-radius: 50%;
-          filter: blur(2px);
-          animation-name: floatUp;
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-        }
-        @keyframes floatUp {
-          0% { transform: translateY(0) scale(1); opacity: 0;}
-          10% { opacity: 1;}
-          90% { opacity: 1;}
-          100% { transform: translateY(-110vh) scale(0.8); opacity: 0;}
-        }
-      `}</style>
     </section>
   );
 }

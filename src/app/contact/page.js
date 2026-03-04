@@ -1,24 +1,16 @@
 "use client";
+
 import Sidebar from "@/components/Sidebar";
-import ThemeToggle from "@/components/ThemeToggle";
+import { motion } from "framer-motion";
 import { useState } from "react";
 
 export default function Contact() {
-  const dotsCount = 10;
-  const dots = Array.from({ length: dotsCount });
-  const colors = [
-    "rgba(255, 99, 132, 0.7)",
-    "rgba(54, 162, 235, 0.7)",
-    "rgba(255, 206, 86, 0.7)",
-    "rgba(75, 192, 192, 0.7)",
-    "rgba(153, 102, 255, 0.7)",
-    "rgba(255, 159, 64, 0.7)",
-  ];
   const [status, setStatus] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("Sending...");
+
     const form = e.target;
     const data = new FormData(form);
 
@@ -28,8 +20,9 @@ export default function Contact() {
         headers: { Accept: "application/json" },
         body: data,
       });
+
       if (response.ok) {
-        setStatus("Thanks for sending your message!");
+        setStatus("✨ Thanks for your message! I'll get back to you soon.");
         form.reset();
       } else {
         setStatus("Something went wrong. Please try again.");
@@ -37,201 +30,103 @@ export default function Contact() {
     } catch {
       setStatus("Could not send. Please try again.");
     }
+
     setTimeout(() => setStatus(""), 5000);
   };
 
   return (
-    <main className="sm:ml-16 min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-indigo-50 to-pink-50 relative overflow-hidden">
-      <Sidebar />
-      <ThemeToggle />
-      {/* Colorful Animated Dots */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        {dots.map((_, i) => {
-          const size = Math.random() * 8 + 4;
-          const left = Math.random() * 100;
-          const delay = Math.random() * 10;
-          const duration = Math.random() * 10 + 8;
-          const opacity = Math.random() * 0.5 + 0.3;
-          const color = colors[Math.floor(Math.random() * colors.length)];
-          return (
-            <span
-              key={i}
-              className="dot"
-              style={{
-                width: size,
-                height: size,
-                left: `${left}%`,
-                background: color,
-                animationDelay: `${delay}s`,
-                animationDuration: `${duration}s`,
-                opacity: opacity,
-              }}
-            />
-          );
-        })}
+    <main className="relative min-h-screen w-full flex items-center bg-[#f4f1ee] overflow-hidden px-6">
 
-        {/* Floating Shapes */}
-        <div className="shape circle animate-float"
-          style={{
-            top: "10%",
-            left: "12%",
-            width: 120,
-            height: 120,
-            backgroundColor: "rgba(255,99,132,0.3)"
-          }}
-        />
-        <div className="shape square animate-rotate"
-          style={{
-            top: "40%",
-            left: "76%",
-            width: 90,
-            height: 90,
-            backgroundColor: "rgba(54,162,235,0.25)"
-          }}
-        />
-        <div className="shape diamond animate-rotate"
-          style={{
-            top: "17%",
-            left: "30%",
-            width: 80,
-            height: 80,
-            backgroundColor: "rgba(153,102,255,0.25)"
-          }}
-        />
-        <div className="shape triangle animate-float-alt"
-          style={{
-            top: "77%",
-            left: "20%",
-            width: 0,
-            height: 0,
-            borderLeft: "50px solid transparent",
-            borderRight: "50px solid transparent",
-            borderBottom: "100px solid rgba(255,159,64,0.3)"
-          }}
-        />
-        <div className="shape dot animate-orbit"
-          style={{
-            top: "66%",
-            left: "66%",
-            width: 30,
-            height: 30,
-            backgroundColor: "rgba(75,192,192,0.3)"
-          }}
-        />
-        <div className="shape hexagon bounce"
-          style={{
-            top: "81%",
-            left: "81%",
-            width: 90,
-            height: 90,
-            backgroundColor: "rgba(255,206,86,0.3)"
-          }}
-        />
+      <Sidebar />
+
+      {/* Soft Background (matching other pages) */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-indigo-200 opacity-30 blur-[140px]" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-pink-200 opacity-30 blur-[120px]" />
       </div>
 
-      <section className="max-w-lg w-full mx-auto text-center animate-fade-in relative z-10">
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-indigo-700">Get in Touch</h1>
-        <p className="text-gray-600 mb-8">
-          "Let's create something great! ✨ I'm always open to new projects and collaborations."
-          🛠️ Let's connect and discuss exciting new opportunities."
-        </p>
+      <section className="relative z-10 max-w-5xl w-full mx-auto grid md:grid-cols-2 gap-16 items-center py-20">
 
-        <form
-          onSubmit={handleSubmit}
-          className="flex flex-col gap-4 max-w-md mx-auto"
+        {/* LEFT SIDE */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          <label className="text-left font-medium">
-            Your name:
-            <input
-              type="text"
-              name="name"
-              required
-              className="mt-2 px-4 py-2 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-indigo-300"
-            />
-          </label>
-          <label className="text-left font-medium">
-            Your email:
-            <input
-              type="email"
-              name="email"
-              required
-              className="mt-2 px-4 py-2 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-indigo-300"
-            />
-          </label>
-          <label className="text-left font-medium">
-            Your message:
-            <textarea
-              name="message"
-              required
-              rows={4}
-              className="mt-2 px-4 py-2 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-indigo-300"
-            />
-          </label>
-          <button
-            type="submit"
-            className="mt-2 px-6 py-2 bg-indigo-600 text-white rounded font-semibold hover:bg-indigo-700 transition"
-          >
-            Send
-          </button>
-          {status && (
-            <p className="mt-4 font-semibold text-indigo-600">{status}</p>
-          )}
-        </form>
-      </section>
+          <h1 className="text-5xl md:text-6xl font-light text-gray-900 leading-tight">
+            Let’s build something{" "}
+            <span className="italic font-semibold text-indigo-600">
+              amazing
+            </span>
+          </h1>
 
-      <style jsx>{`
-        .animate-fade-in {
-          animation: fadeIn 1s cubic-bezier(.77,0,.18,1) both;
-        }
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(32px);}
-          to { opacity: 1; transform: translateY(0);}
-        }
-        .dot {
-          position: absolute;
-          bottom: -12px;
-          border-radius: 50%;
-          filter: blur(2px);
-          animation-name: floatUp;
-          animation-timing-function: ease-in-out;
-          animation-iteration-count: infinite;
-        }
-        @keyframes floatUp {
-          0% { transform: translateY(0px) scale(1); opacity: 0; }
-          10% { opacity: 1; }
-          50% { transform: translateY(-48vh) scale(1.2); }
-          90% { opacity: 1; }
-          100% { transform: translateY(-110vh) scale(0.85); opacity: 0; }
-        }
-        .shape {
-          position: absolute;
-          opacity: 0.5;
-          animation-fill-mode: forwards;
-        }
-        .circle { border-radius: 50%; }
-        .square { border-radius: 8px; background-clip: padding-box; }
-        .diamond { border-radius: 8px; transform: rotate(45deg); background-clip: padding-box; }
-        .dot { border-radius: 50%; }
-        .triangle { width: 0; height: 0; position: absolute; }
-        .hexagon {
-          position: relative;
-          clip-path: polygon(
-            25% 0%, 75% 0%, 100% 50%,
-            75% 100%, 25% 100%, 0% 50%
-          );
-        }
-        @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-24px);} }
-        @keyframes floatAlt { 0%,100%{transform:translateY(0);} 50%{transform:translateY(28px);} }
-        @keyframes rotate { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
-        @keyframes orbit { 0%{transform:rotate(0deg)translateX(80px);} 100%{transform:rotate(360deg)translateX(80px);} }
-        @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
-        .animate-float { animation: float 7s ease-in-out infinite; }
-        .animate-float-delay { animation: float 8s 2s ease-in-out infinite; }
-        .animate-float-alt { animation: floatAlt 9s 1s ease-in-out infinite; }
-        .animate-rotate { animation: rotate 13s linear infinite; }
-        .animate-orbit { animation: orbit 9s linear infinite; transform-origin: center center;}
-        .bounce { animation: bounce 5s ease-in-out infinite; }
-      `}</style>
+          <p className="mt-8 text-gray-600 text-lg leading-relaxed max-w-md">
+            I'm always open to new opportunities, collaborations, and creative
+            ideas. If you have a project in mind — let’s talk and make it real.
+          </p>
+        </motion.div>
+
+        {/* RIGHT SIDE - FORM */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="bg-white/70 backdrop-blur-md border border-white/40 rounded-2xl p-10 shadow-xl"
+        >
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+
+            <div>
+              <label className="text-sm font-medium text-gray-700">
+                Your Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                required
+                className="mt-2 w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/80 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
+              />
+            </div>
+
+            <div>
+              <label className="text-sm font-medium text-gray-700">
+                Your Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                required
+                className="mt-2 w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/80 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
+              />
+            </div>
+
+            <div>
+              <label className="text-sm font-medium text-gray-700">
+                Your Message
+              </label>
+              <textarea
+                name="message"
+                rows={4}
+                required
+                className="mt-2 w-full px-4 py-3 rounded-lg border border-gray-300 bg-white/80 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="mt-4 px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition shadow-md hover:shadow-lg"
+            >
+              Send Message →
+            </button>
+
+            {status && (
+              <p className="text-sm font-medium text-indigo-600 mt-2">
+                {status}
+              </p>
+            )}
+          </form>
+        </motion.div>
+
+      </section>
     </main>
   );
 }
