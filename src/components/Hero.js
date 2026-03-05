@@ -6,10 +6,39 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen w-full flex items-center bg-[#f4f1ee] overflow-hidden px-6">
 
-      {/* Soft Artistic Background Layers */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-200 opacity-30 blur-[140px]" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-pink-200 opacity-30 blur-[120px]" />
+      {/* ✨ Animated Background */}
+      <div className="absolute inset-0 overflow-hidden">
+
+        {/* Floating Blob 1 */}
+        <motion.div
+          animate={{ y: [0, -40, 0], x: [0, 30, 0] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-200 opacity-30 blur-[140px] rounded-full"
+        />
+
+        {/* Floating Blob 2 */}
+        <motion.div
+          animate={{ y: [0, 50, 0], x: [0, -30, 0] }}
+          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-pink-200 opacity-30 blur-[120px] rounded-full"
+        />
+
+        {/* Subtle Moving Light Sweep */}
+        <motion.div
+          animate={{ x: ["-100%", "100%"] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent blur-2xl"
+        />
+
+        {/* Subtle Grid Texture */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)",
+            backgroundSize: "80px 80px",
+          }}
+        />
       </div>
 
       {/* Main Layout */}
@@ -17,8 +46,6 @@ export default function Hero() {
 
         {/* LEFT SIDE */}
         <div>
-
-          {/* Vertical Accent Line */}
           <div className="flex items-start gap-6">
             <div className="w-[3px] h-40 bg-indigo-600 mt-2" />
 
@@ -39,7 +66,10 @@ export default function Hero() {
                 className="text-5xl md:text-7xl font-light text-gray-900 leading-[1.1]"
               >
                 I design <br />
-                with <span className="italic font-semibold text-indigo-600">emotion</span> <br />
+                with <span className="italic font-semibold text-indigo-600">
+                  emotion
+                </span>{" "}
+                <br />
                 & intention.
               </motion.h1>
             </div>
@@ -94,10 +124,8 @@ export default function Hero() {
         >
           <div className="relative">
 
-            {/* Soft Glow */}
             <div className="absolute inset-0 rounded-full bg-indigo-300 blur-3xl opacity-30 scale-110" />
 
-            {/* Profile Image */}
             <motion.img
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 200 }}
@@ -105,7 +133,6 @@ export default function Hero() {
               alt="Zuveriya Khan"
               className="relative w-[340px] h-[340px] object-cover rounded-full shadow-2xl border-4 border-white"
             />
-
           </div>
         </motion.div>
 
