@@ -1,21 +1,62 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 import Sidebar from "@/components/Sidebar";
 
 export default function About() {
+
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
+    setMouse({ x: e.clientX, y: e.clientY });
+  };
+
   return (
-    <main className="relative min-h-screen w-full flex items-center bg-[#f4f1ee] overflow-hidden px-6">
+    <main
+      onMouseMove={handleMouseMove}
+      className="relative min-h-screen w-full flex items-center bg-[#f4f1ee] overflow-hidden px-6"
+    >
 
       <Sidebar />
 
-      {/* Soft Artistic Background Layers */}
+      {/* GRID BACKGROUND */}
+      <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(#000_1px,transparent_1px),linear-gradient(90deg,#000_1px,transparent_1px)] bg-[size:80px_80px]" />
+
+      {/* BREATHING GRADIENT BLOBS */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-indigo-200 opacity-30 blur-[140px]" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-pink-200 opacity-30 blur-[120px]" />
+
+        <motion.div
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 8, repeat: Infinity }}
+          className="absolute top-[-100px] left-[-120px] w-[600px] h-[600px] bg-indigo-300 opacity-30 blur-[160px]"
+        />
+
+        <motion.div
+          animate={{ scale: [1, 1.15, 1] }}
+          transition={{ duration: 10, repeat: Infinity }}
+          className="absolute bottom-[-100px] right-[-100px] w-[500px] h-[500px] bg-pink-300 opacity-30 blur-[150px]"
+        />
+
+        <motion.div
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{ duration: 9, repeat: Infinity }}
+          className="absolute top-[40%] left-[40%] w-[400px] h-[400px] bg-purple-300 opacity-20 blur-[140px]"
+        />
+
       </div>
 
-      {/* Centered Content */}
+      {/* MOUSE FOLLOW LIGHT */}
+      <div
+        className="pointer-events-none absolute w-[500px] h-[500px] rounded-full opacity-30 blur-[120px]"
+        style={{
+          background: "radial-gradient(circle, white, transparent 70%)",
+          left: mouse.x - 250,
+          top: mouse.y - 250
+        }}
+      />
+
+      {/* CONTENT */}
       <div className="relative z-10 max-w-4xl mx-auto w-full">
 
         <motion.div
@@ -28,7 +69,9 @@ export default function About() {
             }
           }}
         >
+
           <div className="flex items-start gap-6">
+
             <motion.div
               variants={{
                 hidden: { height: 0, opacity: 0 },
@@ -39,6 +82,7 @@ export default function About() {
             />
 
             <div>
+
               <motion.p
                 variants={{
                   hidden: { opacity: 0, y: 20 },
@@ -63,7 +107,9 @@ export default function About() {
                 </span>{" "}
                 & passion.
               </motion.h1>
+
             </div>
+
           </div>
 
           <motion.p
@@ -82,9 +128,11 @@ export default function About() {
             My focus lies in building high-performing applications
             wrapped in thoughtful design.
           </motion.p>
+
         </motion.div>
 
       </div>
+
     </main>
   );
 }

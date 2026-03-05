@@ -6,10 +6,15 @@ import { useEffect, useState } from "react";
 export default function Skills() {
   const [animate, setAnimate] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     setAnimate(true);
   }, []);
+
+  const handleMouseMove = (e) => {
+    setMouse({ x: e.clientX, y: e.clientY });
+  };
 
   const skills = [
     { name: "React", color: "bg-indigo-100", text: "text-indigo-700", category: "Frontend" },
@@ -41,15 +46,35 @@ export default function Skills() {
       : skills.filter((skill) => skill.category === selectedCategory);
 
   return (
-    <main className="relative min-h-screen w-full flex items-center bg-[#f4f1ee] overflow-hidden px-6">
-
+    <main
+      onMouseMove={handleMouseMove}
+      className="relative min-h-screen w-full flex items-center bg-[#f4f1ee] overflow-hidden px-6"
+    >
       <Sidebar />
 
-      {/* Soft Artistic Background */}
+      {/* GRID TEXTURE */}
+      <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(#000_1px,transparent_1px),linear-gradient(90deg,#000_1px,transparent_1px)] bg-[size:80px_80px]" />
+
+      {/* BREATHING BLOBS */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-200 opacity-30 blur-[140px]" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-pink-200 opacity-30 blur-[120px]" />
+
+        <div className="absolute top-[-120px] left-[-120px] w-[600px] h-[600px] bg-indigo-300 opacity-30 blur-[150px] animate-pulse" />
+
+        <div className="absolute bottom-[-120px] right-[-120px] w-[500px] h-[500px] bg-pink-300 opacity-30 blur-[150px] animate-pulse" />
+
+        <div className="absolute top-[40%] left-[40%] w-[400px] h-[400px] bg-purple-300 opacity-20 blur-[140px] animate-pulse" />
+
       </div>
+
+      {/* MOUSE FOLLOW LIGHT */}
+      <div
+        className="pointer-events-none absolute w-[500px] h-[500px] rounded-full opacity-30 blur-[120px]"
+        style={{
+          background: "radial-gradient(circle, white, transparent 70%)",
+          left: mouse.x - 250,
+          top: mouse.y - 250,
+        }}
+      />
 
       <section className="relative z-10 max-w-4xl w-full mx-auto text-center">
 
@@ -62,14 +87,12 @@ export default function Skills() {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`
-                px-4 py-2 rounded-full border font-semibold transition
-                ${
-                  selectedCategory === cat
-                    ? "bg-indigo-600 text-white border-indigo-600"
-                    : "bg-white text-indigo-700 border-indigo-200 hover:bg-indigo-50"
-                }
-              `}
+              className={`px-4 py-2 rounded-full border font-semibold transition
+              ${
+                selectedCategory === cat
+                  ? "bg-indigo-600 text-white border-indigo-600"
+                  : "bg-white text-indigo-700 border-indigo-200 hover:bg-indigo-50"
+              }`}
             >
               {cat}
             </button>
@@ -78,6 +101,7 @@ export default function Skills() {
 
         <div className="flex flex-wrap items-center justify-center gap-6">
           {filteredSkills.map((skill, index) => {
+
             const floatClass =
               index % 3 === 0
                 ? "float-slow"
@@ -89,8 +113,8 @@ export default function Skills() {
               <span
                 key={skill.name}
                 className={`${skill.color} ${skill.text} ${floatClass}
-                  px-4 py-2 rounded-full font-semibold inline-block
-                  transition-all duration-500 hover:scale-110`}
+                px-4 py-2 rounded-full font-semibold inline-block
+                transition-all duration-500 hover:scale-110`}
                 style={{
                   opacity: animate ? 1 : 0,
                   transform: animate ? "scale(1)" : "scale(0.8)",
@@ -107,32 +131,25 @@ export default function Skills() {
 
       <style jsx>{`
         @keyframes floatSlow {
-          0%, 100% { transform: translateY(0px); }
+          0%,100% { transform: translateY(0px); }
           50% { transform: translateY(-10px); }
         }
 
         @keyframes floatMedium {
-          0%, 100% { transform: translateY(0px); }
+          0%,100% { transform: translateY(0px); }
           50% { transform: translateY(-14px); }
         }
 
         @keyframes floatFast {
-          0%, 100% { transform: translateY(0px); }
+          0%,100% { transform: translateY(0px); }
           50% { transform: translateY(-8px); }
         }
 
-        .float-slow {
-          animation: floatSlow 6s ease-in-out infinite;
-        }
-
-        .float-medium {
-          animation: floatMedium 5s ease-in-out infinite;
-        }
-
-        .float-fast {
-          animation: floatFast 4s ease-in-out infinite;
-        }
+        .float-slow { animation: floatSlow 6s ease-in-out infinite; }
+        .float-medium { animation: floatMedium 5s ease-in-out infinite; }
+        .float-fast { animation: floatFast 4s ease-in-out infinite; }
       `}</style>
+
     </main>
   );
 }
