@@ -128,7 +128,7 @@ export default function Hero() {
             <motion.img
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 200 }}
-              src="/profile.jpg"
+              src="/profile.png"
               alt="Zuveriya Khan"
               className="relative w-[340px] h-[340px] object-cover rounded-full shadow-2xl border-4 border-white"
             />

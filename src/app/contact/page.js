@@ -54,7 +54,7 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-5xl md:text-6xl font-light text-gray-900 leading-tight">
-            Let’s build something{" "}
+            Let&apos;s build something{" "}
             <span className="italic font-semibold text-indigo-600">
               amazing
             </span>
@@ -62,7 +62,7 @@ export default function Contact() {
 
           <p className="mt-8 text-gray-600 text-lg leading-relaxed max-w-md">
             I am always open to new opportunities, collaborations, and creative
-            ideas. If you have a project in mind — let’s talk and make it real.
+            ideas. If you have a project in mind — let&apos;s talk and make it real.
           </p>
         </motion.div>
 
