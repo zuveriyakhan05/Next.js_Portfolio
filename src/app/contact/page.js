@@ -61,7 +61,7 @@ export default function Contact() {
           </h1>
 
           <p className="mt-8 text-gray-600 text-lg leading-relaxed max-w-md">
-            I'm always open to new opportunities, collaborations, and creative
+            I am always open to new opportunities, collaborations, and creative
             ideas. If you have a project in mind — let’s talk and make it real.
           </p>
         </motion.div>
