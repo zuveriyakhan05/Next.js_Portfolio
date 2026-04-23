@@ -80,7 +80,7 @@ export default function Hero() {
             transition={{ delay: 0.5 }}
             className="mt-10 text-lg text-gray-600 max-w-lg leading-relaxed"
           >
-            Hi, I’m <span className="font-semibold">Zuveriya Khan</span> —
+            Hi, I&apos;m <span className="font-semibold">Zuveriya Khan</span> —
             a creative designer & developer crafting meaningful digital
             experiences that feel human, elegant and alive.
           </motion.p>

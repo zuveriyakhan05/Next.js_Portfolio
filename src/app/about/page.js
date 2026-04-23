@@ -119,7 +119,7 @@ export default function About() {
             }}
             className="mt-10 text-lg text-gray-600 max-w-2xl leading-relaxed"
           >
-            Hi, I’m <span className="font-semibold">Zuveriya Khan</span> —
+            Hi, I&apos;m <span className="font-semibold">Zuveriya Khan</span> —
             a Full-Stack Developer and UI/UX Designer pursuing
             B.Tech in Computer Science Engineering.
             <br /><br />
